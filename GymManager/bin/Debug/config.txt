@@ -1,0 +1,2 @@
+mongodb://admin:admin1@ds159036.mlab.com:59036/gymmanager
+gymmanager

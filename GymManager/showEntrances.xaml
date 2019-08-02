@@ -1,0 +1,65 @@
+﻿<Page x:Class="GymManager.showEntrances"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GymManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="669" d:DesignWidth="1108"
+      Title="showEntrances">
+
+    <Grid>
+        <DataGrid Name="entrancesList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="649" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,20,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}"
+                                Header="Imię">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtName" Width="100" TextChanged="txtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Surname}"
+                                Header="Nazwisko">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtSurname" Width="100" TextChanged="txtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding packageName}"
+                                Header="Nazwa karnetu">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtpackageName" Width="100" TextChanged="txtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding entranceDate, StringFormat=\{0:dd.MM.yyyy\}}"
+                                Header="Data wejścia">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtentranceDate" Width="100" TextChanged="txtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

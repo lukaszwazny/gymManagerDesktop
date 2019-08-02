@@ -1,0 +1,18 @@
+﻿<Window x:Class="GymManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1366"
+        WindowStartupLocation = "CenterScreen">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="250" Background="#FF9696B4">
+            <MenuItem Header="          Wejścia" Click="entrances" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
+            <MenuItem Header="           Klienci" Click="customersShow" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
+            <MenuItem Header="           Karnety" Click="managePackages" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
+        </Menu>
+        <Frame Name="frame" x:FieldModifier="public" HorizontalAlignment="Left" Height="669" Margin="250,0,0,0" VerticalAlignment="Top" Width="1108"/>
+    </Grid>
+</Window>

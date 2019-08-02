@@ -1,0 +1,33 @@
+﻿<Page x:Class="GymManager.managePackage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GymManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="699" d:DesignWidth="1108"
+      Title="managePackage">
+
+    <Grid>
+        <TextBox Name="Name" HorizontalAlignment="Left" Height="23" Margin="227,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,100,0,0" TextWrapping="Wrap" Text="Nazwa: " VerticalAlignment="Top"/>
+        <TextBox Name="Price" HorizontalAlignment="Left" Height="23" Margin="227,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,128,0,0" TextWrapping="Wrap" Text="Cena:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,156,0,0" TextWrapping="Wrap" Text="Opis:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,261,0,0" TextWrapping="Wrap" Text="Czas trwania:" VerticalAlignment="Top"/>
+        <TextBox Name="TimeLimit" HorizontalAlignment="Left" Height="23" Margin="227,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,289,0,0" TextWrapping="Wrap" Text="LImit wejść:" VerticalAlignment="Top"/>
+        <TextBox Name="EntrancesLimit" HorizontalAlignment="Left" Height="23" Margin="227,289,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,50,0,0" TextWrapping="Wrap" Text="Edytuj karnet" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Edytuj!" Click="updatePackage" HorizontalAlignment="Left" Margin="272,317,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Usuń karnet!" Click="deletePackage" HorizontalAlignment="Left" Margin="495,100,0,0" VerticalAlignment="Top" Width="76" Height="23"/>
+        <RichTextBox Name="Description" HorizontalAlignment="Left" Height="100" Margin="227,156,0,0" VerticalAlignment="Top" Width="120">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</Page>

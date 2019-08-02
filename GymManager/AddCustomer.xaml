@@ -1,0 +1,41 @@
+﻿<Page x:Class="GymManager.AddCustomer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GymManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="669" d:DesignWidth="1108"
+      Title="AddCustomer">
+
+    <Grid>
+        <TextBox Name="Name" HorizontalAlignment="Left" Height="23" Margin="227,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,100,0,0" TextWrapping="Wrap" Text="Imię: " VerticalAlignment="Top"/>
+        <TextBox Name="Surname" HorizontalAlignment="Left" Height="23" Margin="227,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,128,0,0" TextWrapping="Wrap" Text="Nazwisko:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,156,0,0" TextWrapping="Wrap" Text="RFID:" VerticalAlignment="Top"/>
+        <TextBox Name="CardNumber" HorizontalAlignment="Left" Height="23" Margin="227,156,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,184,0,0" TextWrapping="Wrap" Text="Płeć:" VerticalAlignment="Top"/>
+        <ComboBox Name="Gender" HorizontalAlignment="Left" Margin="227,184,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Mężczyzna" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Kobieta" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="100,211,0,0" TextWrapping="Wrap" Text="Nr telefonu:" VerticalAlignment="Top"/>
+        <TextBox Name="Phone" HorizontalAlignment="Left" Height="23" Margin="227,211,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,239,0,0" TextWrapping="Wrap" Text="Ul. zamieszkania:" VerticalAlignment="Top"/>
+        <TextBox Name="Street" HorizontalAlignment="Left" Height="23" Margin="227,239,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,267,0,0" TextWrapping="Wrap" Text="Nr domu/mieszkania:" VerticalAlignment="Top"/>
+        <TextBox Name="StreetNumber" HorizontalAlignment="Left" Height="23" Margin="227,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,295,0,0" TextWrapping="Wrap" Text="Kod pocztowy:" VerticalAlignment="Top"/>
+        <TextBox Name="ZipCode" HorizontalAlignment="Left" Height="23" Margin="227,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="City" HorizontalAlignment="Left" Height="23" Margin="227,323,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,323,0,0" TextWrapping="Wrap" Text="Miasto:" VerticalAlignment="Top"/>
+        <DatePicker Name="Birthday" HorizontalAlignment="Left" Margin="227,351,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,351,0,0" TextWrapping="Wrap" Text="Data urodzenia:" VerticalAlignment="Top"/>
+        <DatePicker Name="JoinDate" HorizontalAlignment="Left" Margin="227,380,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,380,0,0" TextWrapping="Wrap" Text="Data doł. do klubu:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,50,0,0" TextWrapping="Wrap" Text="Dodaj nowego klienta" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Dodaj!" Click="newCustomer" HorizontalAlignment="Left" Margin="272,409,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Page>
