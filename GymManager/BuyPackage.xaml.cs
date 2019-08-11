@@ -22,15 +22,12 @@ namespace GymManager
     public partial class BuyPackage : Page
     {
         private Customer customer;
-        private IMongoCollection<Package> packagesCollection;
         public BuyPackage(Customer c)
         {
             InitializeComponent();
             title.Text = "Kup karnet dla " + c.Name + " " + c.Surname;
-            //get packages collection
-            packagesCollection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
             //get list of all packages
-            List<Package> packages = packagesCollection.Find(_ => true).ToList();
+            List<Package> packages = Package.getPackages();
             //get list of all packages names
             List<string> packagesNames = new List<string>();
             packages.ForEach(p =>
@@ -53,22 +50,18 @@ namespace GymManager
                 if (packagesList.Text == "")
                     throw new Exception("Nazwa nie może być pusta!");
 
-                //get bought packages collection
-                IMongoCollection<BoughtPackage> collection = MongoDatabaseSingleton.Instance.database.GetCollection<BoughtPackage>("BoughtPackages");
-
                 //get list of one package with name selected by user
-                List<Package> packages = packagesCollection.Find(p => p.Name == packagesList.Text).ToList();
+                Package package = Package.getPackageByName(packagesList.Text);
 
                 //create new bought package
                 BoughtPackage c = new BoughtPackage
                 {
-                    CustomerId = customer.Id,
-                    PackageId = packages.ElementAt(0).Id,
+                    PackageId = package.Id,
                     PurchaseDate = date.SelectedDate.Value
                 };
 
                 //add to collection
-                collection.InsertOne(c);
+                c.add(customer);
 
                 //show managing customer page
                 MainWindow.MainFrame.Content = new manageCustomer(customer);

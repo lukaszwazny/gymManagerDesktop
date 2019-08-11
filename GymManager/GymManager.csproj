@@ -75,14 +75,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addFamilyMember.xaml.cs">
+      <DependentUpon>addFamilyMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship.cs" />
+    <Compile Include="Purchase.cs" />
     <Compile Include="showEntrances.xaml.cs">
       <DependentUpon>showEntrances.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="showFamily.xaml.cs">
+      <DependentUpon>showFamily.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addEntrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="addFamilyMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="showEntrances.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="showFamily.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

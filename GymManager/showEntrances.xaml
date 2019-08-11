@@ -9,7 +9,7 @@
       Title="showEntrances">
 
     <Grid>
-        <DataGrid Name="entrancesList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="649" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,20,0,0">
+        <DataGrid Name="entrancesList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="644" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,25,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}"
                                 Header="Imię">
@@ -61,5 +61,14 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Szukaj: " VerticalAlignment="Top" Height="20"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="54,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="txtNameTextChanged"/>
+        <ComboBox Name="whatToSearch" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Imię" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Nazwisko" HorizontalAlignment="Left" Width="118" IsSelected="True"/>
+            <ComboBoxItem Content="Nazwa karnetu" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Data wejścia" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
     </Grid>
+
 </Page>

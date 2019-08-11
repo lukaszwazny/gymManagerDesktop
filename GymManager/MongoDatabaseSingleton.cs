@@ -30,6 +30,8 @@ namespace GymManager
         public MongoClient client { get; set; }
         //field containing database object
         public IMongoDatabase database { get; set; }
+
+
         
     }
 }

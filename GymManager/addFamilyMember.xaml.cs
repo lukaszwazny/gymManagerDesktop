@@ -14,22 +14,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace GymManager
 {
     /// <summary>
-    /// Logika interakcji dla klasy Customers.xaml
+    /// Logika interakcji dla klasy addFamilyMember.xaml
     /// </summary>
-    public partial class Customers : Page
+    public partial class addFamilyMember : Page
     {
-        public Customers()
+        private Customer customer;
+        public addFamilyMember(Customer c)
         {
             InitializeComponent();
-
             //show all customers
             IMongoCollection<Customer> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Customer>("Customers");
             customersList.ItemsSource = collection.Find(_ => true).ToList();
+            title.Text += c.Name + " " + c.Surname;
+            customer = c;
         }
 
         //method for automatic searching in customers list
@@ -92,28 +93,33 @@ namespace GymManager
             }
         }
 
-        private void newCustomer(object sender, RoutedEventArgs e)
-        {
-            //show page for adding new customer
-            MainWindow.MainFrame.Content = new AddCustomer();
-        }
 
-        //manage customer
+        //add family member
         private void DataGridCell_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            //get customer that has been clicked
-            DependencyObject dep = (DependencyObject)e.OriginalSource;
-
-            while (!(dep is DataGridCell))
+            try
             {
-                dep = VisualTreeHelper.GetParent(dep);
+                //get customer that has been clicked
+                DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+                while (!(dep is DataGridCell))
+                {
+                    dep = VisualTreeHelper.GetParent(dep);
+                }
+
+                DataGridCell cell = dep as DataGridCell;
+                Customer c = (Customer)cell.DataContext;
+
+                customer.addFamilyMember(c, type.Text);
+
+                //show new family
+                MainWindow.MainFrame.Content = new showFamily(customer);
             }
-
-            DataGridCell cell = dep as DataGridCell;
-            Customer c = (Customer)cell.DataContext;
-
-            //show managing customer panel
-            MainWindow.MainFrame.Content = new manageCustomer(c);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

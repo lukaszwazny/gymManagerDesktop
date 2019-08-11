@@ -51,25 +51,23 @@ namespace GymManager
                 if (Surname.Text == "")
                     throw new Exception("Nazwisko nie może być puste!");
 
-                //defining what to update and with what data
-                UpdateDefinition<Customer> update = Builders<Customer>.Update
-                .Set(c => c.Name, Name.Text)
-                .Set(c => c.Surname, Surname.Text)
-                .Set(c => c.CardNumber, CardNumber.Text)
-                .Set(c => c.Gender, Gender.Text)
-                .Set(c => c.Phone, Phone.Text)
-                .Set(c => c.Street, Street.Text)
-                .Set(c => c.StreetNumber, StreetNumber.Text)
-                .Set(c => c.ZipCode, ZipCode.Text)
-                .Set(c => c.City, City.Text)
-                .Set(c => c.Birthday, Birthday.SelectedDate.Value)
-                .Set(c => c.JoinDate, JoinDate.SelectedDate.Value);
+                Customer c = new Customer
+                {
+                    Id = customer.Id,
+                    Name = Name.Text,
+                    Surname = Surname.Text,
+                    CardNumber = CardNumber.Text,
+                    Gender = Gender.Text,
+                    Phone = Phone.Text,
+                    Street = Street.Text,
+                    StreetNumber = StreetNumber.Text,
+                    ZipCode = ZipCode.Text,
+                    City = City.Text,
+                    Birthday = Birthday.SelectedDate.Value,
+                    JoinDate = JoinDate.SelectedDate.Value
+                };
 
-                //get customers collection
-                IMongoCollection<Customer> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Customer>("Customers");
-
-                //update customer
-                collection.FindOneAndUpdate(c => c.Id == customer.Id, update);
+                c.update();
 
                 //show customers list
                 MainWindow.MainFrame.Content = new Customers();
@@ -84,16 +82,12 @@ namespace GymManager
 
         private void deleteCustomer(object sender, RoutedEventArgs e)
         {
-            //get customers collection
-            IMongoCollection<Customer> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Customer>("Customers");
-
             //message box for safety reasons
             MessageBoxResult areYouSure = MessageBox.Show("Czy na pewno chcesz usunąć tego klienta?", "Uwaga!", MessageBoxButton.YesNo);
 
             if(areYouSure == MessageBoxResult.Yes)
             {
-                //deleting
-                collection.FindOneAndDelete(c => c.Id == customer.Id);
+                customer.delete();
                 MainWindow.MainFrame.Content = new Customers();
             }
                  
@@ -113,6 +107,11 @@ namespace GymManager
         private void entrance(object sender, RoutedEventArgs e)
         {
             MainWindow.MainFrame.Content = new addEntrance(customer);
+        }
+
+        private void family(object sender, RoutedEventArgs e)
+        {
+            MainWindow.MainFrame.Content = new showFamily(customer);
         }
     }
 }

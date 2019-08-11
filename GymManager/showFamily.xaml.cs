@@ -14,24 +14,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace GymManager
 {
     /// <summary>
-    /// Logika interakcji dla klasy Customers.xaml
+    /// Logika interakcji dla klasy showFamily.xaml
     /// </summary>
-    public partial class Customers : Page
+    public partial class showFamily : Page
     {
-        public Customers()
+        private Customer customer;
+        public showFamily(Customer c)
         {
             InitializeComponent();
-
-            //show all customers
-            IMongoCollection<Customer> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Customer>("Customers");
-            customersList.ItemsSource = collection.Find(_ => true).ToList();
+            title.Text += c.Name + " " + c.Surname;
+            //show
+            customersList.ItemsSource = c.getFamilyWithoutCustomer();
+            customer = c;
         }
-
         //method for automatic searching in customers list
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -92,10 +91,10 @@ namespace GymManager
             }
         }
 
-        private void newCustomer(object sender, RoutedEventArgs e)
+        private void newFamilyMember(object sender, RoutedEventArgs e)
         {
-            //show page for adding new customer
-            MainWindow.MainFrame.Content = new AddCustomer();
+            //show page for adding new family member
+            MainWindow.MainFrame.Content = new addFamilyMember(customer);
         }
 
         //manage customer

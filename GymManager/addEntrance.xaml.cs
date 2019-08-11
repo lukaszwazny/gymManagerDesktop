@@ -25,29 +25,17 @@ namespace GymManager
         //Customer for which we are adding entrance
         private Customer customer;  
 
-        private List<BoughtPackage> boughtPackages;
-
         public addEntrance(Customer c)
         {
             InitializeComponent();
             title.Text = "Zarejestruj wejście " + c.Name + " " + c.Surname;
-            //get bought packages collection
-            IMongoCollection<BoughtPackage> collection = MongoDatabaseSingleton.Instance.database.GetCollection<BoughtPackage>("BoughtPackages");
             //get packages bought by customer in list of BoughtPackage objects
-            List<BoughtPackage> customersPackages = collection.Find(bp => bp.CustomerId == c.Id).ToList();
-            //get packages bought by customer in list of Package objects
-            List<Package> packages = new List<Package>();
-            IMongoCollection<Package> packagesCollection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
-            customersPackages.ForEach(cp =>
-            {
-                List<Package> p = packagesCollection.Find(pac => pac.Id == cp.PackageId).Limit(1).ToList();
-                packages.Add(p.ElementAt(0));
-            });
+            List<BoughtPackage> customersPackages = c.getBoughtPackages();
             //get list of package names bought by customer
             List<string> packagesNames = new List<string>();
-            packages.ForEach(p =>
+            customersPackages.ForEach(p =>
             {
-                packagesNames.Add(p.Name);
+                packagesNames.Add(p.getName());
             });
             //display these names
             packagesList.ItemsSource = packagesNames;
@@ -55,8 +43,6 @@ namespace GymManager
             date.SelectedDate = DateTime.Now;
             //remember customer (for add method)
             customer = c;
-            //remember bought packages (for add method)
-            boughtPackages = customersPackages;
         }
 
         private void add(object sender, RoutedEventArgs e)
@@ -67,20 +53,8 @@ namespace GymManager
                 if (packagesList.Text == "")
                     throw new Exception("Nazwa nie może być pusta!");
 
-                //get entrances collection
-                IMongoCollection<Entrance> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Entrance>("Entrances");
-
-                //get list of one package with name selected by user
-                IMongoCollection<Package> packagesCollection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
-                List<Package> packages = packagesCollection.Find(p => p.Name == packagesList.Text).ToList();
-
                 //get bought package selected by user
-                BoughtPackage boughtPackage = new BoughtPackage();
-                boughtPackages.ForEach(bp =>
-                {
-                    if (bp.PackageId == packages.ElementAt(0).Id)
-                        boughtPackage = bp;
-                });
+                BoughtPackage boughtPackage = customer.getBoughtPackageByName(packagesList.Text);
 
                 //create new entrance
                 Entrance c = new Entrance
@@ -89,9 +63,10 @@ namespace GymManager
                     BoughtPackageId = boughtPackage.Id,
                     Date = date.SelectedDate.Value
                 };
+                
 
                 //add entrance
-                collection.InsertOne(c);
+                c.add();
 
                 //show entrances
                 MainWindow.MainFrame.Content = new showEntrances();

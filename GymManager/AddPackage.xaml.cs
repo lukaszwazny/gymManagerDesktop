@@ -40,9 +40,6 @@ namespace GymManager
                 if (EntrancesLimit.Text == "")
                     throw new Exception("Limit wejść nie może być pusty!");
 
-                //get packages collection
-                IMongoCollection<Package> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
-
                 //create new package
                 Package c = new Package
                 {
@@ -54,7 +51,7 @@ namespace GymManager
                 };
 
                 //add package
-                collection.InsertOne(c);
+                c.add();
 
                 //show packages
                 MainWindow.MainFrame.Content = new managePackages();

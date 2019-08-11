@@ -1,0 +1,8 @@
+1. Przy dodawaniu wejœcia musi byæ rozró¿nienie na karnety aktywne i nieaktywne
+2. Problem z dat¹ przy dodawaniu do bazy danych
+3. Zmiana dynamicznego wyszukiwania na bardziej podobne do fitnessmanager
+4. przycisk odœwie¿ przy cz³onkach
+5. Customer.getBoughtPackagesByName() - dodaæ datê
+6. dodaæ metodê Package.isActive()
+7. dodaæ datê przy wyœwietlaniu wejœæ
+8. dodaæ opcjê wieku przy karnetach

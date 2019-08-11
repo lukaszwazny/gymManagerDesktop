@@ -73,8 +73,17 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button  Click="buyPackage" Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button  Click="buyPackage" Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="304,0,0,0"/>
         <TextBlock Name="text" HorizontalAlignment="Left" Margin="80,0,0,0" TextWrapping="Wrap" Text="TextBlo" VerticalAlignment="Top" Height="20" />
-
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Szukaj: " VerticalAlignment="Top" Height="20"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="54,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="txtNameTextChanged"/>
+        <ComboBox Name="whatToSearch" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Nazwa" HorizontalAlignment="Left" Width="118" IsSelected="True"/>
+            <ComboBoxItem Content="Cena" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Czas trwania" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Limt wejść" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Data zakupu" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        
     </Grid>
 </Page>

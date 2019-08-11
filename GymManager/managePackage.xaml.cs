@@ -51,19 +51,17 @@ namespace GymManager
                 if (EntrancesLimit.Text == "")
                     throw new Exception("Limit wejść nie może być pusty!");
 
-                //defining what to update and with what data
-                UpdateDefinition<Package> update = Builders<Package>.Update
-                .Set(c => c.Name, Name.Text)
-                .Set(c => c.Price, Convert.ToDouble(Price.Text))
-                .Set(c => c.Description, new TextRange(Description.Document.ContentStart, Description.Document.ContentEnd).Text)
-                .Set(c => c.TimeLimit, Convert.ToInt32(TimeLimit.Text))
-                .Set(c => c.EntrancesLimit, Convert.ToInt32(EntrancesLimit.Text));
+                Package p = new Package
+                {
+                    Id = package.Id,
+                    Name = Name.Text,
+                    Price = Convert.ToDouble(Price.Text),
+                    Description = new TextRange(Description.Document.ContentStart, Description.Document.ContentEnd).Text,
+                    TimeLimit = Convert.ToInt32(TimeLimit.Text),
+                    EntrancesLimit = Convert.ToInt32(TimeLimit.Text)
+                };
 
-                //get packages collection
-                IMongoCollection<Package> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
-
-                //update package
-                collection.FindOneAndUpdate(c => c.Id == package.Id, update);
+                p.update();
 
                 //show packages list
                 MainWindow.MainFrame.Content = new managePackages();
@@ -78,8 +76,6 @@ namespace GymManager
 
         private void deletePackage(object sender, RoutedEventArgs e)
         {
-            //get packages collection
-            IMongoCollection<Package> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
 
             //message box for safety reasons
             MessageBoxResult areYouSure = MessageBox.Show("Czy na pewno chcesz usunąć ten karnet?", "Uwaga!", MessageBoxButton.YesNo);
@@ -87,7 +83,7 @@ namespace GymManager
             if (areYouSure == MessageBoxResult.Yes)
             {
                 //deleting
-                collection.FindOneAndDelete(c => c.Id == package.Id);
+                package.delete();
                 MainWindow.MainFrame.Content = new managePackages();
             }
 

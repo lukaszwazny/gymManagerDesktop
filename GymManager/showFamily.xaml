@@ -1,4 +1,4 @@
-﻿<Page x:Class="GymManager.Customers"
+﻿<Page x:Class="GymManager.showFamily"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:GymManager"
       mc:Ignorable="d" 
       d:DesignHeight="669" d:DesignWidth="1108"
-      Title="Customers">
+      Title="showFamily">
 
     <Grid>
-        <DataGrid Name="customersList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="644" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,25,0,0">
+        <DataGrid Name="customersList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="611" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,58,0,0">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_PreviewMouseDown"/>
@@ -102,10 +102,10 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="newCustomerButton"  Click="newCustomer" Content="Nowy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="304,0,0,0" Height="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Szukaj: " VerticalAlignment="Top" Height="20"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="54,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="txtNameTextChanged"/>
-        <ComboBox Name="whatToSearch" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="120">
+        <Button x:Name="newCustomerButton"  Click="newFamilyMember" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="304,31,0,0" Height="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Szukaj: " VerticalAlignment="Top" Height="20"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="54,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="txtNameTextChanged"/>
+        <ComboBox Name="whatToSearch" HorizontalAlignment="Left" Margin="179,31,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="ID" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Imię" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Nazwisko" HorizontalAlignment="Left" Width="118" IsSelected="True"/>
@@ -113,6 +113,6 @@
             <ComboBoxItem Content="Data ur." HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Data doł. do klubu" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-
+        <TextBlock Name="title" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Rodzina klienta: " VerticalAlignment="Top" FontSize="15"/>
     </Grid>
 </Page>

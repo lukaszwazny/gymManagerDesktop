@@ -30,35 +30,8 @@ namespace GymManager
             customer = c;
             InitializeComponent();
             text.Text = "Karnety klienta " + c.Name + " " + c.Surname;
-            //get bought packages collection
-            IMongoCollection<BoughtPackage> collection = MongoDatabaseSingleton.Instance.database.GetCollection<BoughtPackage>("BoughtPackages");
-            //find bought packages bought by customer
-            List<BoughtPackage> customersPackages = collection.Find(bp => bp.CustomerId == c.Id).ToList();
-            //get list of package objects that customer bought
-            List<Package> packages = new List<Package>();
-            IMongoCollection<Package> packagesCollection = MongoDatabaseSingleton.Instance.database.GetCollection<Package>("Packages");
-            customersPackages.ForEach(cp =>
-            {
-                List<Package> p = packagesCollection.Find(pac => pac.Id == cp.PackageId).Limit(1).ToList();
-                packages.Add(p.ElementAt(0));
-            });
-            //make list of boughtPackagesToShow objects for displaying data abiut bought packages
-            List<boughtPackagesToShow> bptss = new List<boughtPackagesToShow>();
-            customersPackages.ForEach(cp =>
-            {
-                Package p = packages.ElementAt(customersPackages.IndexOf(cp));
-                boughtPackagesToShow bpts = new boughtPackagesToShow
-                {
-                    Name = p.Name,
-                    Price = p.Price,
-                    TimeLimit = p.TimeLimit,
-                    EntrancesLimit = p.EntrancesLimit,
-                    PurchaseDate = cp.PurchaseDate
-                };
-                bptss.Add(bpts);
-            });
             //display
-            packagesList.ItemsSource = bptss;
+            packagesList.ItemsSource = customer.getBoughtPackagesToShow();
         }
 
         private void buyPackage(object sender, RoutedEventArgs e)
@@ -87,6 +60,32 @@ namespace GymManager
                     if (t.Name == "txtTimeLimit")
                         return (p.TimeLimit == Convert.ToInt32(filter));
                     if (t.Name == "txtPurchaseDate")
+                        return (p.PurchaseDate.ToString().ToUpper().StartsWith(filter.ToUpper()));
+                    return (p.EntrancesLimit == Convert.ToInt32(filter));
+                };
+            }
+        }
+
+        //method for automatic searching in customers list - different way
+        private void txtNameTextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            string filter = t.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(packagesList.ItemsSource);
+            if (filter == "")
+                cv.Filter = null;
+            else
+            {
+                cv.Filter = o =>
+                {
+                    boughtPackagesToShow p = o as boughtPackagesToShow;
+                    if (whatToSearch.Text == "Nazwa")
+                        return (p.Name.ToUpper().StartsWith(filter.ToUpper()));
+                    if (whatToSearch.Text == "Cena")
+                        return (p.Price == Convert.ToInt32(filter));
+                    if (whatToSearch.Text == "Czas trwania")
+                        return (p.TimeLimit == Convert.ToInt32(filter));
+                    if (whatToSearch.Text == "Limit wejść")
                         return (p.PurchaseDate.ToString().ToUpper().StartsWith(filter.ToUpper()));
                     return (p.EntrancesLimit == Convert.ToInt32(filter));
                 };

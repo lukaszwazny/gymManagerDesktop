@@ -40,6 +40,7 @@
         <Button Content="Kup karnet" Click="buyPackage" HorizontalAlignment="Left" Margin="495,128,0,0" VerticalAlignment="Top" Width="107" Height="23"/>
         <Button Content="Historia karnetów" Click="packageHistory" HorizontalAlignment="Left" Margin="495,156,0,0" VerticalAlignment="Top" Width="107"/>
         <Button Content="Wejście" Click="entrance" HorizontalAlignment="Left" Margin="495,181,0,0" VerticalAlignment="Top" Width="107"/>
+        <Button Content="Rodzina" Click="family" HorizontalAlignment="Left" Margin="495,206,0,0" VerticalAlignment="Top" Width="107"/>
 
     </Grid>
 </Page>

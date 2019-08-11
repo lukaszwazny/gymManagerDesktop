@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ja\Downloads\studia\PK4\GymManager\GymManager\obj\Debug\
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\
 GymManager
 none
 false
 DEBUG;TRACE
-C:\Users\Ja\Downloads\studia\PK4\GymManager\GymManager\App.xaml
-121108308741
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\App.xaml
+14-680346611
 
-211692528224
-201568320266
-AddCustomer.xaml;addEntrance.xaml;AddPackage.xaml;BuyPackage.xaml;Customers.xaml;DatabaseLoading.xaml;MainWindow.xaml;manageCustomer.xaml;managePackage.xaml;managePackages.xaml;packageHistory.xaml;showEntrances.xaml;
+251868467934
+20-329467060
+AddCustomer.xaml;addEntrance.xaml;addFamilyMember.xaml;AddPackage.xaml;BuyPackage.xaml;Customers.xaml;DatabaseLoading.xaml;MainWindow.xaml;manageCustomer.xaml;managePackage.xaml;managePackages.xaml;packageHistory.xaml;showEntrances.xaml;showFamily.xaml;
 
 False
 
