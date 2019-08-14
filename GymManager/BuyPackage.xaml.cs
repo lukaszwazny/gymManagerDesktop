@@ -38,6 +38,10 @@ namespace GymManager
             packagesList.ItemsSource = packagesNames;
             //make selected date default - now
             date.SelectedDate = DateTime.Now;
+            //make another selected date default - now
+            date_Copy.SelectedDate = DateTime.Now;
+            //types of payment
+            type.ItemsSource = PaymentType.getPaymentTypes();
             //remember customer (for buy method)
             customer = c;
         }
@@ -57,11 +61,21 @@ namespace GymManager
                 BoughtPackage c = new BoughtPackage
                 {
                     PackageId = package.Id,
-                    PurchaseDate = date.SelectedDate.Value
+                    PurchaseDate = date.SelectedDate.Value,
+                    EntrancesLeft = package.EntrancesLimit
+                };
+
+                //create new purchase
+                Purchase p = new Purchase
+                {
+                    CustomerId = customer.Id,
+                    Amount = Convert.ToDouble(amount.Text),
+                    Date = date_Copy.SelectedDate.Value,
+                    Type = type.Text
                 };
 
                 //add to collection
-                c.add(customer);
+                c.add(customer, p);
 
                 //show managing customer page
                 MainWindow.MainFrame.Content = new manageCustomer(customer);
@@ -70,6 +84,12 @@ namespace GymManager
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void PackagesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Package p = Package.getPackageByName(packagesList.Text);
+            amount.Text = Convert.ToString(p.Price);
         }
     }
 }

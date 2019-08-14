@@ -12,7 +12,7 @@
         <DataGrid Name="customersList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="611" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,58,0,0">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_PreviewMouseDown"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_PreviewMouseDown"/>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>
@@ -114,5 +114,6 @@
             <ComboBoxItem Content="Data doł. do klubu" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <TextBlock Name="title" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Rodzina klienta: " VerticalAlignment="Top" FontSize="15"/>
+        <Button x:Name="deleteCustomer"  Click="deleteFamilyMember" Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="384,31,0,0" Height="22"/>
     </Grid>
 </Page>

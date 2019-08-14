@@ -39,5 +39,48 @@ namespace GymManager
             IMongoCollection<Relationship> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Relationship>("Relationships");
             collection.InsertOne(this);
         }
+        public void delete()
+        {
+            IMongoCollection<Relationship> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Relationship>("Relationships");
+            collection.FindOneAndDelete(c => c.Id == this.Id);
+        }
+
+        //who is Customer c in this relationship
+        public string getRole(Customer c)
+        {
+            if (this.Type == "parent-child")
+            {
+                //is child
+                if(this.FirstCustomer == c.Id)
+                {
+                    if (c.Gender == "Kobieta")
+                        return "Córka";
+                    else
+                        return "Syn";
+                }
+                //is parent
+                else
+                {
+                    if (c.Gender == "Kobieta")
+                        return "Matka";
+                    else
+                        return "Ojciec";
+                }
+            }
+            else if (this.Type == "wife-husband")
+            {
+                if (c.Gender == "Kobieta")
+                    return "Żona";
+                else
+                    return "Mąż";
+            }
+            else
+            {
+                if (c.Gender == "Kobieta")
+                    return "Siostra";
+                else
+                    return "Brat";
+            }
+        } 
     }
 }

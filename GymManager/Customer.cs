@@ -50,10 +50,17 @@ namespace GymManager
             IMongoCollection<Customer> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Customer>("Customers");
 
             //get Customer with maximal Id
-            Customer maxId = collection.Find(_ => true).Sort("{_id: -1}").ToList().ElementAt(0);
-
-            //set id of customer
-            this.Id = ++(maxId.Id);
+            List<Customer> maxIdList = collection.Find(_ => true).Sort("{_id: -1}").ToList();
+            Customer maxId;
+            if (maxIdList.Count > 0)
+            {
+                maxId = maxIdList.ElementAt(0);
+                //set id of customer
+                this.Id = ++(maxId.Id);
+            }
+            else
+                //set id of customer
+                this.Id = 1;
 
             //add customer to collection
             collection.InsertOne(this);
@@ -164,6 +171,17 @@ namespace GymManager
             IMongoCollection<Relationship> collection = MongoDatabaseSingleton.Instance.database.GetCollection<Relationship>("Relationships");
             List<Relationship> relationships = collection.Find(c => c.FirstCustomer == this.Id || c.SecondCustomer == this.Id).ToList();
             return relationships;
+        }
+
+        private Relationship getRelationship(Customer c)
+        {
+            List<Relationship> relationships = this.getRelationships();
+            Relationship relationship = new Relationship();
+            relationships.ForEach(r => {
+                if (r.getCustomer(this).Id == c.Id)
+                    relationship = r;
+            });
+            return relationship;
         }
 
         public List<Customer> getFamilyWithoutCustomer()
@@ -338,7 +356,7 @@ namespace GymManager
             if (this.isInFamily(c))
                 return;
             Relationship relation = new Relationship();
-            if(type == "Ojciec")
+            if (type == "Ojciec")
             {
                 if (c.Gender == "Kobieta")
                     throw new Exception("Nie może być ojcem kobieta!");
@@ -350,7 +368,8 @@ namespace GymManager
                     relation.add();
 
                     List<Customer> thisRelatives = c.getChildren();
-                    thisRelatives.ForEach(r => {
+                    thisRelatives.ForEach(r =>
+                    {
                         this.addFamilyMember(r, "Siostra");
                     });
 
@@ -358,7 +377,8 @@ namespace GymManager
                     this.addFamilyMember(mother, "Matka");
 
                     List<Customer> cChildren = this.getRelatives();
-                    cChildren.ForEach(r => {
+                    cChildren.ForEach(r =>
+                    {
                         c.addFamilyMember(r, "Syn");
                     });
                 }
@@ -379,7 +399,8 @@ namespace GymManager
                     relation.add();
 
                     List<Customer> thisRelatives = c.getChildren();
-                    thisRelatives.ForEach(r => {
+                    thisRelatives.ForEach(r =>
+                    {
                         this.addFamilyMember(r, "Brat");
                     });
 
@@ -387,7 +408,8 @@ namespace GymManager
                     this.addFamilyMember(father, "Ojciec");
 
                     List<Customer> cChildren = this.getRelatives();
-                    cChildren.ForEach(r => {
+                    cChildren.ForEach(r =>
+                    {
                         c.addFamilyMember(r, "Córka");
                     });
 
@@ -405,12 +427,14 @@ namespace GymManager
                 relation.add();
 
                 List<Customer> thisChildren = c.getRelatives();
-                thisChildren.ForEach(r => {
+                thisChildren.ForEach(r =>
+                {
                     this.addFamilyMember(r, "Syn");
                 });
 
                 List<Customer> cRelatives = this.getChildren();
-                cRelatives.ForEach(r => {
+                cRelatives.ForEach(r =>
+                {
                     c.addFamilyMember(r, "Siostra");
                 });
             }
@@ -426,12 +450,14 @@ namespace GymManager
                     relation.add();
 
                     List<Customer> thisChildren = c.getChildren();
-                    thisChildren.ForEach(r => {
+                    thisChildren.ForEach(r =>
+                    {
                         this.addFamilyMember(r, "Córka");
                     });
 
                     List<Customer> cChildren = this.getChildren();
-                    cChildren.ForEach(r => {
+                    cChildren.ForEach(r =>
+                    {
                         c.addFamilyMember(r, "Syn");
                     });
                 }
@@ -476,7 +502,8 @@ namespace GymManager
                 relation.add();
 
                 List<Customer> thisRelatives = c.getRelatives();
-                thisRelatives.ForEach(r => {
+                thisRelatives.ForEach(r =>
+                {
                     this.addFamilyMember(r, "Brat");
                 });
 
@@ -487,17 +514,69 @@ namespace GymManager
                 this.addFamilyMember(mother, "Matka");
 
                 List<Customer> cRelatives = this.getRelatives();
-                cRelatives.ForEach(r => {
+                cRelatives.ForEach(r =>
+                {
                     c.addFamilyMember(r, "Siostra");
                 });
 
                 Customer cfather = this.getFather();
                 c.addFamilyMember(cfather, "Ojciec");
-                
+
                 Customer cmother = this.getMother();
                 c.addFamilyMember(cmother, "Matka");
 
             }
+
+        }
+
+        public void deleteFamilyMember(Customer c)
+        {
+            Console.WriteLine("elo");
+            if (c == null)
+                return;
+            if (!(this.isInFamily(c)))
+                return;
+            Relationship relation = this.getRelationship(c);
+            relation.delete();
+            if (relation.Type == "parent-child")
+            {
+                //is child
+                if(relation.FirstCustomer == this.Id)
+                {
+                    this.getMother().deleteFamilyMember(c);
+                    List<Customer> relatives = this.getRelatives();
+                    relatives.ForEach(r => {
+                        r.deleteFamilyMember(c);
+                    });
+                }
+                //is parent
+                else
+                {
+                    List<Customer> children = this.getChildren();
+                    children.ForEach(child =>
+                    {
+                        child.deleteFamilyMember(c);
+                    });
+                    this.getPartner().deleteFamilyMember(c);
+                }
+            }
+            if (relation.Type == "wife-husband")
+            {
+                List<Customer> children = this.getChildren();
+                children.ForEach(child => {
+                    child.deleteFamilyMember(c);
+                });
+            }
+            if (relation.Type == "relatives")
+            {
+                List<Customer> relatives = this.getRelatives();
+                relatives.ForEach(r => {
+                    r.deleteFamilyMember(c);
+                });
+                this.getFather().deleteFamilyMember(c);
+                this.getMother().deleteFamilyMember(c);
+            }
+           
         }
     }
 }

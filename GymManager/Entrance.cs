@@ -17,6 +17,8 @@ namespace GymManager
         public int CustomerId { get; set; }
         [BsonElement("boughtPackageId")]
         public ObjectId BoughtPackageId { get; set; }
+        [BsonElement("trainingId")]
+        public ObjectId TrainingId { get; set; }
         [BsonElement("date")]
         public DateTime Date { get; set; }
 

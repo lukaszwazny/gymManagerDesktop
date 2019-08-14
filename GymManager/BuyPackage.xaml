@@ -9,12 +9,18 @@
       Title="BuyPackage">
 
     <Grid>
-        <TextBlock Name="title" HorizontalAlignment="Left" Margin="349,100,0,0" TextWrapping="Wrap" Text="Kup karnet dla" VerticalAlignment="Top" FontSize="20"/>
-        <ComboBox Name="packagesList" HorizontalAlignment="Left" Margin="423,132,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Name="title" HorizontalAlignment="Left" Margin="325,100,0,0" TextWrapping="Wrap" Text="Kup karnet dla" VerticalAlignment="Top" FontSize="20"/>
+        <ComboBox SelectionChanged="PackagesList_SelectionChanged" Name="packagesList" HorizontalAlignment="Left" Margin="423,132,0,0" VerticalAlignment="Top" Width="120"/>
         <DatePicker Name="date" HorizontalAlignment="Left" Margin="423,159,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="349,132,0,0" TextWrapping="Wrap" Text="Karnet:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="349,159,0,0" TextWrapping="Wrap" Text="Data zakupu:" VerticalAlignment="Top"/>
-        <Button Content="Kup!" Click="buy" HorizontalAlignment="Left" Margin="468,188,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,132,0,0" TextWrapping="Wrap" Text="Karnet:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,159,0,0" TextWrapping="Wrap" Text="Data rozpoczęcia karnetu:" VerticalAlignment="Top" Height="29" Width="93"/>
+        <Button Content="Kup!" Click="buy" HorizontalAlignment="Left" Margin="470,303,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Name="amount" HorizontalAlignment="Left" Height="23" Margin="425,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,193,0,0" TextWrapping="Wrap" Text="Ile zapłacił:" VerticalAlignment="Top"/>
+        <DatePicker x:Name="date_Copy" HorizontalAlignment="Left" Margin="425,221,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,221,0,0" TextWrapping="Wrap" Text="Data płatności:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,250,0,0" TextWrapping="Wrap" Text="Typ płatności:" VerticalAlignment="Top"/>
+        <ComboBox  x:Name="type" HorizontalAlignment="Left" Margin="423,250,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

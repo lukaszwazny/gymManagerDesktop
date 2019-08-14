@@ -23,6 +23,8 @@ namespace GymManager
         public int TimeLimit { get; set; }       //unit - day; 0 means unlimited
         [BsonElement("entrancesLimit")]
         public int EntrancesLimit { get; set; }  //0 means unlimited
+        [BsonElement("forFamily")]
+        public bool ForFamily { get; set; }     //is this family package?
 
         public static Package getPackageByName(string name)
         {

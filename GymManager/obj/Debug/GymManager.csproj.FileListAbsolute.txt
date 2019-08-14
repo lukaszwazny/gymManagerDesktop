@@ -59,7 +59,6 @@ C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\bin\Debug\MongoD
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\bin\Debug\MongoDB.Driver.xml
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\bin\Debug\MongoDB.Driver.Core.xml
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\bin\Debug\System.Buffers.xml
-C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csprojAssemblyReference.cache
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\AddCustomer.g.cs
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addEntrance.g.cs
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\AddPackage.g.cs
@@ -91,10 +90,11 @@ C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymMan
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.Properties.Resources.resources
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csproj.GenerateResource.cache
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csproj.CoreCompileInputs.cache
-C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csproj.CopyComplete
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.exe
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.pdb
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\showFamily.g.cs
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\showFamily.baml
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addFamilyMember.g.cs
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addFamilyMember.baml
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csprojAssemblyReference.cache
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csproj.CopyComplete

@@ -17,6 +17,12 @@ namespace GymManager
         public int CustomerId { get; set; }
         [BsonElement("boughtPackageId")]
         public ObjectId BoughtPackageId { get; set; }
+        [BsonElement("amount")]
+        public double Amount { get; set; }
+        [BsonElement("date")]
+        public DateTime Date { get; set; }
+        [BsonElement("type")]
+        public string Type { get; set; }       //type of payment (gotówka, przelew, karta, non)
 
         public BoughtPackage convertToBoughtPackage()
         {

@@ -17,6 +17,8 @@ namespace GymManager
         public ObjectId PackageId { get; set; }
         [BsonElement("purchaseDate")]
         public DateTime PurchaseDate { get; set; }
+        [BsonElement("entrancesLeft")]
+        public int EntrancesLeft { get; set; }
 
         //for converting from BoughtPackage to Package type
         public Package convertToPackage()
@@ -33,20 +35,26 @@ namespace GymManager
             return p.Name;
         }
 
-        public void add(Customer customer)
+        public void add(Customer customer, Purchase pur)
         {
             //get bought packages collection
             IMongoCollection<BoughtPackage> collection = MongoDatabaseSingleton.Instance.database.GetCollection<BoughtPackage>("BoughtPackages");
+            //add bought package
             collection.InsertOne(this);
-            List<Customer> customers = customer.getFamily();
-            customers.ForEach( c => {
-                Purchase p = new Purchase
-                {
-                    CustomerId = c.Id,
-                    BoughtPackageId = collection.Find(bp => bp.PackageId == this.PackageId && bp.PurchaseDate == this.PurchaseDate).ToList().ElementAt(0).Id
-                };
-                p.add();
-            });
+            //add purchase
+            pur.BoughtPackageId = collection.Find(bp => bp.PackageId == this.PackageId && bp.PurchaseDate == this.PurchaseDate).ToList().ElementAt(0).Id;
+            pur.add();
+            //for customers family
+            if (this.convertToPackage().ForFamily == true)
+            {
+                List<Customer> customers = customer.getFamilyWithoutCustomer();
+                customers.ForEach(c => {
+                    Purchase p = pur;
+                    p.Amount = 0;
+                    p.add();
+                });
+            }
+            
         }
     }
 }

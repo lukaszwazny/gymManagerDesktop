@@ -97,6 +97,19 @@ namespace GymManager
             MainWindow.MainFrame.Content = new addFamilyMember(customer);
         }
 
+        private void deleteFamilyMember(object sender, RoutedEventArgs e)
+        {
+            Customer c = (Customer)customersList.SelectedItem;
+            //message box for safety reasons
+            MessageBoxResult areYouSure = MessageBox.Show("Czy na pewno chcesz usunąć " + c.Name + " " + c.Surname + " z rodziny klienta " + customer.Name + " " + customer.Surname + "?", "Uwaga!", MessageBoxButton.YesNo);
+
+            if (areYouSure == MessageBoxResult.Yes)
+            {
+                customer.deleteFamilyMember(c);
+                MainWindow.MainFrame.Content = new showFamily(customer);
+            }
+        }
+
         //manage customer
         private void DataGridCell_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
