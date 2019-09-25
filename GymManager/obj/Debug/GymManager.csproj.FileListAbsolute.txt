@@ -98,3 +98,9 @@ C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addFam
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addFamilyMember.baml
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csprojAssemblyReference.cache
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\GymManager.csproj.CopyComplete
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\configuration.g.cs
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\configuration.baml
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\showPaymentTypes.g.cs
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\showPaymentTypes.baml
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addPaymentType.g.cs
+C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\obj\Debug\addPaymentType.baml

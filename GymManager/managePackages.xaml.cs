@@ -71,6 +71,27 @@ namespace GymManager
             MainWindow.MainFrame.Content = new managePackage(p);
         }
 
+        //clicking enter
+        private void DataGridCell_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                //get package that has been clicked
+                DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+                while (!(dep is DataGridCell))
+                {
+                    dep = VisualTreeHelper.GetParent(dep);
+                }
+
+                DataGridCell cell = dep as DataGridCell;
+                Package p = (Package)cell.DataContext;
+
+                //show managing customer panel
+                MainWindow.MainFrame.Content = new managePackage(p);
+            }
+        }
+
         private void newPackage(object sender, RoutedEventArgs e)
         {
             //show page for adding new package

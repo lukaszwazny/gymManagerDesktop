@@ -16,7 +16,7 @@ namespace GymManager
         [BsonElement("name")]
         public string Name { get; set; }
 
-        public static List<string> getPaymentTypes()
+        public static List<string> getPaymentTypesString()
         {
             IMongoCollection<PaymentType> collection = MongoDatabaseSingleton.Instance.database.GetCollection<PaymentType>("PaymentTypes");
             //get list of all packages
@@ -26,6 +26,27 @@ namespace GymManager
                 names.Add(p.Name);
             });
             return names;
+        }
+
+        public static List<PaymentType> getPaymentTypes()
+        {
+            IMongoCollection<PaymentType> collection = MongoDatabaseSingleton.Instance.database.GetCollection<PaymentType>("PaymentTypes");
+            //get list of all packages
+            List<PaymentType> paymentTypes = collection.Find(_ => true).ToList();
+            return paymentTypes;
+        }
+
+        public void add()
+        {
+            //name and surname required
+            if (this.Name == "")
+                throw new Exception("Nazwa nie może być pusta!");
+
+            //get customers collection
+            IMongoCollection<PaymentType> collection = MongoDatabaseSingleton.Instance.database.GetCollection<PaymentType>("PaymentTypes");
+
+            //add customer to collection
+            collection.InsertOne(this);
         }
     }
 }

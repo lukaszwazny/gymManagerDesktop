@@ -78,6 +78,13 @@
     <Compile Include="addFamilyMember.xaml.cs">
       <DependentUpon>addFamilyMember.xaml</DependentUpon>
     </Compile>
+    <Compile Include="addPaymentType.xaml.cs">
+      <DependentUpon>addPaymentType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="configuration.xaml.cs">
+      <DependentUpon>configuration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentType.cs" />
     <Compile Include="Relationship.cs" />
     <Compile Include="Purchase.cs" />
     <Compile Include="showEntrances.xaml.cs">
@@ -86,6 +93,11 @@
     <Compile Include="showFamily.xaml.cs">
       <DependentUpon>showFamily.xaml</DependentUpon>
     </Compile>
+    <Compile Include="showPaymentTypes.xaml.cs">
+      <DependentUpon>showPaymentTypes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Trainer.cs" />
+    <Compile Include="Training.cs" />
     <Page Include="AddCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,7 +114,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="addPaymentType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BuyPackage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="configuration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="showFamily.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="showPaymentTypes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

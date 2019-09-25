@@ -19,7 +19,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="100,289,0,0" TextWrapping="Wrap" Text="LImit wejść:" VerticalAlignment="Top"/>
         <TextBox Name="EntrancesLimit" HorizontalAlignment="Left" Height="23" Margin="227,289,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="100,50,0,0" TextWrapping="Wrap" Text="Edytuj karnet" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Edytuj!" Click="updatePackage" HorizontalAlignment="Left" Margin="272,317,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edytuj!" Click="updatePackage" HorizontalAlignment="Left" Margin="272,337,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Usuń karnet!" Click="deletePackage" HorizontalAlignment="Left" Margin="495,100,0,0" VerticalAlignment="Top" Width="76" Height="23"/>
         <RichTextBox Name="Description" HorizontalAlignment="Left" Height="100" Margin="227,156,0,0" VerticalAlignment="Top" Width="120">
             <FlowDocument>
@@ -28,6 +28,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        <CheckBox Name="forFamily" Content="Rodzinny" HorizontalAlignment="Left" Margin="278,317,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

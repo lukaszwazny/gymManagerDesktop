@@ -40,14 +40,14 @@ namespace GymManager
             MainFrame.Content = new Customers();
         }
 
-        private void managePackages(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Content = new managePackages();
-        }
-
         private void entrances(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new showEntrances();
+        }
+
+        private void configuration(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new configuration();
         }
     }
 }

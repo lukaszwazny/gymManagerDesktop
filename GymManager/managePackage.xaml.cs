@@ -58,7 +58,8 @@ namespace GymManager
                     Price = Convert.ToDouble(Price.Text),
                     Description = new TextRange(Description.Document.ContentStart, Description.Document.ContentEnd).Text,
                     TimeLimit = Convert.ToInt32(TimeLimit.Text),
-                    EntrancesLimit = Convert.ToInt32(TimeLimit.Text)
+                    EntrancesLimit = Convert.ToInt32(TimeLimit.Text),
+                    ForFamily = (bool)forFamily.IsChecked
                 };
 
                 p.update();

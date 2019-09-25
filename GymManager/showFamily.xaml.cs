@@ -127,5 +127,26 @@ namespace GymManager
             //show managing customer panel
             MainWindow.MainFrame.Content = new manageCustomer(c);
         }
+
+        //clicking enter
+        private void DataGridCell_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                //get customer that has been clicked
+                DependencyObject dep = (DependencyObject)e.OriginalSource;
+
+                while (!(dep is DataGridCell))
+                {
+                    dep = VisualTreeHelper.GetParent(dep);
+                }
+
+                DataGridCell cell = dep as DataGridCell;
+                Customer c = (Customer)cell.DataContext;
+
+                //show managing customer panel
+                MainWindow.MainFrame.Content = new manageCustomer(c);
+            }
+        }
     }
 }

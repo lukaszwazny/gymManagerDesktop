@@ -13,6 +13,7 @@
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_PreviewMouseDown"/>
+                    <EventSetter Event="KeyDown" Handler="DataGridCell_KeyDown"/>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>

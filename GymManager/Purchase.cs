@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GymManager
 {
-    class Purchase
+    public class Purchase
     {
         [BsonId]
         public ObjectId Id { get; set; }

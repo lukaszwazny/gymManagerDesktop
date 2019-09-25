@@ -12,7 +12,8 @@
         <DataGrid Name="customersList" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="644" VerticalAlignment="Top" Width="1108" IsReadOnly="True" Margin="0,25,0,0">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_PreviewMouseDown"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_PreviewMouseDown"/>
+                    <EventSetter Event="KeyDown" Handler="DataGridCell_KeyDown"/>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>

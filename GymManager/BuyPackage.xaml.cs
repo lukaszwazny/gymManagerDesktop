@@ -41,7 +41,7 @@ namespace GymManager
             //make another selected date default - now
             date_Copy.SelectedDate = DateTime.Now;
             //types of payment
-            type.ItemsSource = PaymentType.getPaymentTypes();
+            type.ItemsSource = PaymentType.getPaymentTypesString();
             //remember customer (for buy method)
             customer = c;
         }
@@ -88,7 +88,7 @@ namespace GymManager
 
         private void PackagesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Package p = Package.getPackageByName(packagesList.Text);
+            Package p = Package.getPackageByName(packagesList.SelectedValue.ToString());
             amount.Text = Convert.ToString(p.Price);
         }
     }

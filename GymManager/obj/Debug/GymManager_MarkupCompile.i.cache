@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ja\Desktop\strona_kodokan\gymManagerDesktop\GymManager\App.xaml
-14-680346611
+171461713356
 
-29-1373076167
+322007033680
 20-329467060
-AddCustomer.xaml;addEntrance.xaml;addFamilyMember.xaml;AddPackage.xaml;BuyPackage.xaml;Customers.xaml;DatabaseLoading.xaml;MainWindow.xaml;manageCustomer.xaml;managePackage.xaml;managePackages.xaml;packageHistory.xaml;showEntrances.xaml;showFamily.xaml;
+AddCustomer.xaml;addEntrance.xaml;addFamilyMember.xaml;AddPackage.xaml;addPaymentType.xaml;BuyPackage.xaml;configuration.xaml;Customers.xaml;DatabaseLoading.xaml;MainWindow.xaml;manageCustomer.xaml;managePackage.xaml;managePackages.xaml;packageHistory.xaml;showEntrances.xaml;showFamily.xaml;showPaymentTypes.xaml;
 
 True
 

@@ -11,7 +11,7 @@
         <Menu HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="250" Background="#FF9696B4">
             <MenuItem Header="          Wejścia" Click="entrances" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
             <MenuItem Header="           Klienci" Click="customersShow" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
-            <MenuItem Header="           Karnety" Click="managePackages" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
+            <MenuItem Header="       Konfiguracja" Click="configuration" Height="100" Width="250" FontSize="24" BorderBrush="#FF3232C8"/>
         </Menu>
         <Frame Name="frame" x:FieldModifier="public" HorizontalAlignment="Left" Height="669" Margin="250,0,0,0" VerticalAlignment="Top" Width="1108"/>
     </Grid>
